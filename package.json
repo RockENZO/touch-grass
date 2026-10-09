@@ -1,0 +1,18 @@
+{
+  "name": "touch-grass",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "An interactive 3D meadow you can touch without going outside.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "^0.169.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10"
+  }
+}
