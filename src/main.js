@@ -163,8 +163,8 @@ document.addEventListener('pointerleave', () => { hand.style.opacity = 0; trail.
 // ---- loop
 const clock = new THREE.Clock();
 let t = 0;
-function frame() {
-  const dt = Math.min(clock.getDelta(), 0.05);
+const capture = params.has('capture'); // ?capture=1 stops the loop; call __grass.advance(dt) to render frames by hand
+function step(dt) {
   t += dt;
   shared.uTime.value = t;
 
@@ -196,9 +196,12 @@ function frame() {
 
   trail.update(dt);
   renderer.render(scene, camera);
+}
+function frame() {
+  step(Math.min(clock.getDelta(), 0.05));
   requestAnimationFrame(frame);
 }
-requestAnimationFrame(frame);
+if (!capture) requestAnimationFrame(frame);
 
 // for tests / tinkering from the console
-window.__grass = { setTime, touch, trail, camera, TRAIL, get t() { return t; } };
+window.__grass = { advance: step, setTime, touch, trail, camera, TRAIL, get t() { return t; } };

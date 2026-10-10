@@ -2,6 +2,8 @@
 
 Touch grass without going outside. An interactive 3D meadow in the browser: run your hand through the grass and it parts, flattens and slowly springs back. Switch between **Morning**, **Golden** hour and **Night** (fireflies, moon, glowing seeds).
 
+<p align="center"><img src="docs/demo.gif" alt="Demo: moving a hand through the grass, then switching Golden, Night and Morning" width="400"></p>
+
 Inspired by a short demo video of a "touch grass" website. This is an original implementation, built from scratch with [three.js](https://threejs.org) and custom GLSL shaders. No textures or models are used; everything is procedural.
 
 ## How it works
@@ -20,7 +22,7 @@ npm run dev      # http://localhost:5173
 npm run build    # static site in dist/
 ```
 
-URL options: `?time=morning|golden|night`, `?q=low` (fewer blades), `?blades=150000`.
+URL options: `?time=morning|golden|night`, `?q=low` (fewer blades), `?blades=150000`, `?capture=1` (pause the loop and render frames by hand with `__grass.advance(dt)`, handy for recording).
 
 ## Hosting
 
