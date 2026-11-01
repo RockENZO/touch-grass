@@ -20,7 +20,10 @@ Inspired by a short demo video of a "touch grass" website. This is an original i
 npm install
 npm run dev      # http://localhost:5173
 npm run build    # static site in dist/
+npm test         # Playwright check for the time-of-day control
 ```
+
+`npm test` needs Playwright's Chromium once (`npx playwright install chromium`); CI installs it automatically.
 
 URL options: `?time=morning|golden|night`, `?q=low` (fewer blades), `?blades=150000`, `?capture=1` (pause the loop and render frames by hand with `__grass.advance(dt)`, handy for recording).
 
