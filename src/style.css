@@ -21,7 +21,7 @@ canvas#scene { position: fixed; inset: 0; width: 100%; height: 100%; display: bl
   transition: color .35s; white-space: nowrap;
 }
 .pill button svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.pill button[aria-selected='true'] { color: #1c1c2a; }
+.pill button[aria-checked='true'] { color: #1c1c2a; }
 .pill button:focus-visible { outline: 2px solid #fff; outline-offset: 1px; }
 .pill-thumb {
   position: absolute; top: 4px; bottom: 4px; left: 0; width: 0; z-index: 0; border-radius: 999px;
@@ -30,7 +30,7 @@ canvas#scene { position: fixed; inset: 0; width: 100%; height: 100%; display: bl
 }
 body[data-time='night'] .pill { background: rgba(20, 28, 60, 0.35); border-color: rgba(160, 180, 255, 0.22); }
 body[data-time='night'] .pill button { color: rgba(205, 215, 255, 0.62); }
-body[data-time='night'] .pill button[aria-selected='true'] { color: #1b2146; }
+body[data-time='night'] .pill button[aria-checked='true'] { color: #1b2146; }
 body[data-time='night'] .pill-thumb { background: rgba(214, 222, 255, 0.92); }
 
 .hand { position: fixed; left: 0; top: 0; width: 38px; height: 38px; z-index: 10; pointer-events: none; will-change: transform;
