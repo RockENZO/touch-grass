@@ -87,10 +87,35 @@ function setTime(name, instant = false) {
   mixT = instant ? 1 : 0;
   current = name;
   document.body.dataset.time = name;
-  document.querySelectorAll('.pill button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.time === name)));
+  document.querySelectorAll('.pill button').forEach((b) => {
+    const selected = b.dataset.time === name;
+    b.setAttribute('aria-checked', String(selected));
+    // Roving tab stop: only the selected preset is reached by Tab, and the
+    // arrow-key handler below moves focus and selection together.
+    b.tabIndex = selected ? 0 : -1;
+  });
   placeThumb();
   if (instant) mixPresets(cur, from, to, 1);
 }
+const pill = document.getElementById('pill');
+function selectPreset(buttons, index) {
+  const next = buttons[index];
+  next.focus();
+  setTime(next.dataset.time);
+}
+pill.addEventListener('keydown', (event) => {
+  const buttons = [...pill.querySelectorAll('button')];
+  const index = buttons.indexOf(document.activeElement);
+  if (index < 0) return;
+  let next = null;
+  if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (index + 1) % buttons.length;
+  else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = (index - 1 + buttons.length) % buttons.length;
+  else if (event.key === 'Home') next = 0;
+  else if (event.key === 'End') next = buttons.length - 1;
+  else return;
+  event.preventDefault();
+  selectPreset(buttons, next);
+});
 function placeThumb() {
   const b = document.querySelector(`.pill button[data-time="${current}"]`);
   const thumb = document.getElementById('thumb');
@@ -98,7 +123,10 @@ function placeThumb() {
   thumb.style.width = b.offsetWidth + 'px';
   thumb.style.transform = `translateX(${b.offsetLeft}px)`;
 }
-document.querySelectorAll('.pill button').forEach((b) => b.addEventListener('click', () => setTime(b.dataset.time)));
+document.querySelectorAll('.pill button').forEach((b) => b.addEventListener('click', () => {
+  setTime(b.dataset.time);
+  b.focus();
+}));
 addEventListener('resize', placeThumb);
 document.fonts?.ready.then(placeThumb);
 setTime(params.get('time') || 'golden', true);

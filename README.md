@@ -24,6 +24,14 @@ npm run build    # static site in dist/
 
 URL options: `?time=morning|golden|night`, `?q=low` (fewer blades), `?blades=150000`, `?capture=1` (pause the loop and render frames by hand with `__grass.advance(dt)`, handy for recording).
 
+## Accessibility
+
+The time-of-day selector is a labelled radio group with roving focus: Tab reaches
+the selected preset, and Arrow keys, Home and End change the selection with a
+visible focus ring. The meadow interaction itself is pointer-based; there is no
+equivalent non-pointer interaction for the grass, but the three presets can also
+be chosen with `?time=`.
+
 ## Hosting
 
 The build uses relative paths, so `dist/` works on any static host. This repo includes a GitHub Actions workflow that publishes to GitHub Pages on every push to `main`: in the repo go to Settings > Pages and set the source to **GitHub Actions**.
