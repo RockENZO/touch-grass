@@ -11,18 +11,18 @@
   <body>
     <canvas id="scene" aria-label="Interactive grass meadow"></canvas>
 
-    <div class="pill" id="pill" role="radiogroup" aria-label="Time of day">
-      <span class="pill-thumb" id="thumb" aria-hidden="true"></span>
-      <button role="radio" data-time="morning" aria-checked="false" tabindex="-1">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
+    <div class="pill" id="pill" role="tablist" aria-label="Time of day">
+      <span class="pill-thumb" id="thumb"></span>
+      <button role="tab" data-time="morning" aria-selected="false">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
         <span>Morning</span>
       </button>
-      <button role="radio" data-time="golden" aria-checked="true" tabindex="0">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19h18M6 19a6 6 0 0 1 12 0M12 8v2.5M5.6 11.6l1.6 1.6M18.4 11.6l-1.6 1.6"/></svg>
+      <button role="tab" data-time="golden" aria-selected="true">
+        <svg viewBox="0 0 24 24"><path d="M3 19h18M6 19a6 6 0 0 1 12 0M12 8v2.5M5.6 11.6l1.6 1.6M18.4 11.6l-1.6 1.6"/></svg>
         <span>Golden</span>
       </button>
-      <button role="radio" data-time="night" aria-checked="false" tabindex="-1">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      <button role="tab" data-time="night" aria-selected="false">
+        <svg viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
         <span>Night</span>
       </button>
     </div>
